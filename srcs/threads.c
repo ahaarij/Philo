@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sewing.c                                           :+:      :+:    :+:   */
+/*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 09:52:40 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/05/01 14:04:11 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/07/28 18:32:37 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,28 @@ void	*routine(void *ptr)
 	
 	philo = (t_philo *)ptr;
 	if (philo->id % 2 == 0)
-		usleep_but_instead_of_sleep_its_freaky(1);
+		usleep_me(1);
 	while (!dead_loop(philo))
 	{
-		eaty_weaty(philo);
-		sleepy_weepy(philo);
-		thinky_winky(philo);
+		eat(philo);
+		sleep_msg(philo);
+		think(philo);
 	}
 	return (ptr);
 }
 
-int	unleash_the_threads(t_program *program, pthread_mutex_t *forks)
+int	create_thread(t_program *program, pthread_mutex_t *forks)
 {
 	pthread_t	observer;
 	int			i;
 	
 	if(pthread_create(&observer, NULL, &monitor, program->philos) != 0)
-		free_func("Thread creation ewwor", program, forks);
+		free_func("Thread creation error", program, forks);
 	i = 0;
 	while(i < program->philos[0].num_of_philos)
 	{
 		if(pthread_create(&program->philos[i].thread, NULL, &routine, &program->philos[i]) != 0)
-			free_func("Thread creation mishap", program, forks);
+			free_func("Thread creation error", program, forks);
 		i++;
 	}
 	i = 0;

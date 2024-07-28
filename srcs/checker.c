@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   doctors_appointment.c                              :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:02:37 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/05/01 14:17:02 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/07/28 18:31:26 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	*monitor(void *pointer)
 
 	philos = (t_philo *)pointer;
 	while (1)
-		if (fit_check(philos) == 1 || slayyy(philos) == 1)
+		if (fit_check(philos) == 1 || eaten(philos) == 1)
 			break ;
 	return (pointer);
 }
 
-int	philo_dieded(t_philo *philo, size_t time_to_die)
+int	philo_dead(t_philo *philo, size_t time_to_die)
 {
 	pthread_mutex_lock(philo->meal_lock);
 	if(get_current_time() - philo->last_meal >= time_to_die 
@@ -41,7 +41,7 @@ int	fit_check(t_philo *philos)
 	i = 0;
 	while (i < philos[0].num_of_philos)
 	{
-		if(philo_dieded(&philos[i], philos[i].time_to_die))
+		if(philo_dead(&philos[i], philos[i].time_to_die))
 		{
 			print_message("died", &philos[i], philos[i].id);
 			pthread_mutex_lock(philos[0].dead_lock);
@@ -54,7 +54,7 @@ int	fit_check(t_philo *philos)
 	return (0);
 }
 
-int	slayyy(t_philo *philos)
+int	eaten(t_philo *philos)
 {
 	int	i;
 	int	finish_shawarma;

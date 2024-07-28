@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   real.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:48:33 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/05/01 14:08:47 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/07/28 18:27:42 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	init_program(&program, philo);
 	init_fork(forks, ft_atoi(argv[1]));
 	init_philos(philo, &program, forks, argv);
-	unleash_the_threads(&program, forks);
+	create_thread(&program, forks);
 	free_func(NULL, &program, forks);
 	return (0);
 }

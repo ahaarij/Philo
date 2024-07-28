@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:43:01 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/05/01 09:22:19 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/07/28 18:32:10 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,18 @@ void	init_fork(pthread_mutex_t *forks, int philo_num);
 void	init_philos(t_philo *philos, t_program *program, pthread_mutex_t *forks, char **argv);
 void	init_input(t_philo *philo, char **argv);
 size_t	get_current_time();
-int		unleash_the_threads(t_program *program, pthread_mutex_t *forks);
+int		create_thread(t_program *program, pthread_mutex_t *forks);
 void	*monitor(void *pointer);
 void	print_message(char *str, t_philo *philo, int id);
 int		dead_loop(t_philo *philo);
 void 	free_func(char *str, t_program *program, pthread_mutex_t *forks);
 int		ft_strlen(char *str);
-void	thinky_winky(t_philo *philo);
-void	sleepy_weepy(t_philo *philo);
-void	eaty_weaty(t_philo *philo);
+void	think(t_philo *philo);
+void	sleep_msg(t_philo *philo);
+void	eat(t_philo *philo);
 int		philo_dieded(t_philo *philo, size_t time_to_die);
 int		fit_check(t_philo *philos);
-int		slayyy(t_philo *philos);
-int		usleep_but_instead_of_sleep_its_freaky(size_t ms);
+int		eaten(t_philo *philos);
+int		usleep_me(size_t ms);
 
 #endif

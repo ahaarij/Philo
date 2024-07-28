@@ -6,7 +6,7 @@
 #    By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 10:45:26 by ahaarij           #+#    #+#              #
-#    Updated: 2024/05/01 13:47:10 by ahaarij          ###   ########.fr        #
+#    Updated: 2024/07/28 18:25:08 by ahaarij          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -O3 -pthread
 # CFLAGS += -g3 -fsanitize=address
 RM = rm -rf
-SRCS = 	real.c \
-		start_the_race.c \
-		handy_man.c \
-		sewing.c \
-		doctors_appointment.c \
-		daily_routine.c \
-		bob_the_builder.c \
+SRCS = 	main.c \
+		initialization.c \
+		utils.c \
+		threads.c \
+		checker.c \
+		routine.c \
+		libft-utils.c \
 
 SRC = $(addprefix ./srcs/,$(SRCS))
 OBJ = $(SRC:.c=.o)

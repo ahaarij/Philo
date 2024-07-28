@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handy_man.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 08:37:24 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/05/01 13:59:14 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/07/28 18:30:58 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	print_message(char *str, t_philo *philo, int id)
 	pthread_mutex_unlock(philo->write_lock);
 }
 
-int	usleep_but_instead_of_sleep_its_freaky(size_t ms)
+int	usleep_me(size_t ms)
 {
 	size_t start;
 
